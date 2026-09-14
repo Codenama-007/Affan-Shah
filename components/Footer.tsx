@@ -23,32 +23,45 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="flex flex-wrap items-center gap-4 justify-center sm:justify-start">
               <a
-                href="mailto:your@email.com"
+                href="mailto:affanjavedshah@student.sfit.ac.in"
                 className="flex items-center gap-1.5 text-[0.8rem] tracking-[0.1em] text-[#777777] hover:text-[#FF6500] transition-colors uppercase"
               >
                 <Mail size={12} />
-                YOUR@EMAIL.COM
+                AFFANJAVEDSHAH@STUDENT.SFIT.AC.IN
               </a>
               <a
-                href="tel:+1234567890"
+                href="tel:+917820986147"
                 className="flex items-center gap-1.5 text-[0.8rem] tracking-[0.1em] text-[#777777] hover:text-[#FF6500] transition-colors uppercase"
               >
                 <Phone size={12} />
-                +1 234 567 890
+                +91 7820986147
               </a>
               <a
-                href="#"
+                href="https://github.com/Codenama-007"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-[0.8rem] tracking-[0.1em] text-[#777777] hover:text-[#FF6500] transition-colors uppercase"
               >
                 <ExternalLink size={12} />
                 GITHUB
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/affanjavedshah?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-[0.8rem] tracking-[0.1em] text-[#777777] hover:text-[#FF6500] transition-colors uppercase"
               >
                 <ExternalLink size={12} />
                 LINKEDIN
+              </a>
+              <a
+                href="https://www.instagram.com/salar79275?utm_source=qr&igsh=ZTYwM3B3YWJmdDNq"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-[0.8rem] tracking-[0.1em] text-[#777777] hover:text-[#FF6500] transition-colors uppercase"
+              >
+                <ExternalLink size={12} />
+                INSTAGRAM
               </a>
             </div>
 
