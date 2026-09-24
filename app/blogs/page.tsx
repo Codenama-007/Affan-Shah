@@ -1,12 +1,17 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CRTOverlay from "@/components/Effects/CRTOverlay";
 import { blogs } from "@/data/blogs";
 import { Calendar } from "lucide-react";
 
-export const metadata = {
-  title: "BLOG DATABASE // AFFAN SHAH",
-  description: "Articles, notes, and build logs from the developer.",
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Technical articles, notes, and build logs by Affan Shah on RAG systems, AI agents, LangGraph, Next.js, and full-stack development.",
+  alternates: {
+    canonical: "https://affanshahai.vercel.app/blogs",
+  },
 };
 
 export default function BlogsPage() {

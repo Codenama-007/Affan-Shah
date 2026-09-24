@@ -3,9 +3,15 @@ import ProjectGrid from "@/components/Projects/ProjectGrid";
 import Footer from "@/components/Footer";
 import CRTOverlay from "@/components/Effects/CRTOverlay";
 
-export const metadata = {
-  title: "PROJECT DATABASE // AFFAN SHAH",
-  description: "Developer project archive — inspect programs and systems.",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Explore Affan Shah's projects: RAG systems, AI agents, machine learning pipelines, and full-stack web applications built with Python, Next.js, React, and FastAPI.",
+  alternates: {
+    canonical: "https://affanshahai.vercel.app/projects",
+  },
 };
 
 export default function ProjectsPage() {

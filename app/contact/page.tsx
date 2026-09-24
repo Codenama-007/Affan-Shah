@@ -1,12 +1,17 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import ContactForm from "@/components/Contact/ContactForm";
 import Footer from "@/components/Footer";
 import CRTOverlay from "@/components/Effects/CRTOverlay";
 import { Mail, Phone, ExternalLink } from "lucide-react";
 
-export const metadata = {
-  title: "COMMUNICATION TERMINAL // AFFAN SHAH",
-  description: "Open a communication channel with the developer.",
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with Affan Shah, an AI and full-stack developer. Open a communication channel for project work, collaboration, or professional inquiries.",
+  alternates: {
+    canonical: "https://affanshahai.vercel.app/contact",
+  },
 };
 
 export default function ContactPage() {
