@@ -11,17 +11,23 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  {
-    id: "pdf-intelligence",
+{
+    id: "trip-pilot-ai",
     number: "001",
-    title: "PDF INTELLIGENCE SYSTEM",
+    title: "TRIP PILOT AI",
     description:
-      "RAG-powered PDF question-answering application. Upload documents and ask questions against their content using vector search and LLM.",
-    categories: ["AI / ML", "RAG"],
-    technologies: ["Python", "FastAPI", "React", "RAG", "LLM"],
+      "AI-powered travel planning agent built with LangGraph. Generates personalized travel itineraries using LLMs, conversational memory, and web search.",
+    categories: ["AI / ML", "Agentic AI", "Web3"],
+    technologies: [
+      "Python",
+      "LangGraph",
+      "LangChain",
+      "Ollama",
+      "Tavily API"
+    ],
     status: "ACTIVE",
-    demoUrl: "#",
-    sourceUrl: "#",
+    demoUrl: "https://client-server-bay.vercel.app",
+    sourceUrl: "https://github.com/Codenama-007/TripPilotAI",
   },
   {
     id: "ai-coding-assistant",

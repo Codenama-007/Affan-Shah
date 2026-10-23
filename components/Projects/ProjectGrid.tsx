@@ -4,7 +4,12 @@ import { useState } from "react";
 import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
 
-const categories = ["ALL", "WEB DEVELOPMENT", "AI / ML", "RAG", "AGENTIC AI"];
+// Derived from the data so a new category can never silently drop out of the
+// filter (the old hardcoded list did not match "Agentic AI").
+const categories = [
+  "ALL",
+  ...Array.from(new Set(projects.flatMap((p) => p.categories))),
+];
 
 export default function ProjectGrid() {
   const [active, setActive] = useState("ALL");

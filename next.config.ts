@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Nodemailer ships internals that must not be bundled into the server build.
+  serverExternalPackages: ["nodemailer"],
 };
 
 export default nextConfig;

@@ -2,6 +2,12 @@ import { ExternalLink, Code } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
+  // "https://..." is a real link; "#" is a placeholder that should not render.
+  const demoUrl =
+    project.demoUrl && project.demoUrl !== "#" ? project.demoUrl : null;
+  const sourceUrl =
+    project.sourceUrl && project.sourceUrl !== "#" ? project.sourceUrl : null;
+
   return (
     <div className="terminal-panel hover-glow transition-all duration-200" data-grid-item>
       <div className="flex items-center justify-between mb-3">
@@ -47,30 +53,32 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
 
-      <div className="flex gap-2">
-        {project.demoUrl && (
-          <a
-            href={project.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-[0.75rem] tracking-[0.1em] text-[#FF6500] uppercase hover:text-[#FF7A00] transition-colors"
-          >
-            <ExternalLink size={10} />
-            INSPECT
-          </a>
-        )}
-        {project.sourceUrl && (
-          <a
-            href={project.sourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-[0.75rem] tracking-[0.1em] text-[#777777] uppercase hover:text-[#EAEAEA] transition-colors"
-          >
-            <Code size={10} />
-            SOURCE
-          </a>
-        )}
-      </div>
+      {(demoUrl || sourceUrl) && (
+        <div className="flex gap-2">
+          {demoUrl && (
+            <a
+              href={demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-[0.75rem] tracking-[0.1em] text-[#FF6500] uppercase hover:text-[#FF7A00] transition-colors"
+            >
+              <ExternalLink size={10} />
+              INSPECT
+            </a>
+          )}
+          {sourceUrl && (
+            <a
+              href={sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-[0.75rem] tracking-[0.1em] text-[#777777] uppercase hover:text-[#EAEAEA] transition-colors"
+            >
+              <Code size={10} />
+              SOURCE
+            </a>
+          )}
+        </div>
+      )}
     </div>
   );
 }

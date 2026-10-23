@@ -44,28 +44,34 @@ export default function ContactPage() {
                   <div className="section-heading">DIRECT CHANNELS</div>
                   <div className="space-y-4">
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+917820986147"
                       className="flex items-center gap-3 text-[0.9rem] tracking-[0.1em] text-[#777777] hover:text-[#FF6500] transition-colors uppercase"
                     >
                       <Phone size={14} className="text-[#FF6500]" />
-                      <span>+1 234 567 890</span>
+                      <span>+91 7820986147</span>
                     </a>
                     <a
-                      href="mailto:your@email.com"
-                      className="flex items-center gap-3 text-[0.9rem] tracking-[0.1em] text-[#777777] hover:text-[#FF6500] transition-colors uppercase"
+                      href="mailto:affanjavedshah@student.sfit.ac.in"
+                      className="flex items-center gap-3 text-[0.9rem] tracking-[0.1em] text-[#777777] hover:text-[#FF6500] transition-colors"
                     >
                       <Mail size={14} className="text-[#FF6500]" />
-                      <span>YOUR@EMAIL.COM</span>
+                      <span className="normal-case">
+                        affanjavedshah@student.sfit.ac.in
+                      </span>
                     </a>
                     <a
-                      href="#"
+                      href="https://github.com/Codenama-007"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-3 text-[0.9rem] tracking-[0.1em] text-[#777777] hover:text-[#FF6500] transition-colors uppercase"
                     >
                       <ExternalLink size={14} className="text-[#FF6500]" />
                       <span>GITHUB</span>
                     </a>
                     <a
-                      href="#"
+                      href="https://www.linkedin.com/in/affanjavedshah"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-3 text-[0.9rem] tracking-[0.1em] text-[#777777] hover:text-[#FF6500] transition-colors uppercase"
                     >
                       <ExternalLink size={14} className="text-[#FF6500]" />

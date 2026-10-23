@@ -60,6 +60,7 @@ export const metadata: Metadata = {
 
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollAnimations from "@/components/Effects/ScrollAnimations";
+import PageTransitionObserver from "@/components/Transitions/PageTransitionObserver";
 
 export default function RootLayout({
   children,
@@ -70,6 +71,7 @@ export default function RootLayout({
     <html lang="en" className={`${ibmPlexMono.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased">
         <ScrollAnimations />
+        <PageTransitionObserver />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

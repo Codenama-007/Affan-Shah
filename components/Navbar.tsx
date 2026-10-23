@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, type MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { getLenis } from "@/components/SmoothScroll";
 
 const navLinks = [
   { label: "HOME", href: "/" },
@@ -25,14 +26,25 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
     setIsOpen(false);
-    if (href.startsWith("/#")) {
-      const el = document.getElementById(href.slice(2));
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-        return;
-      }
+
+    if (!href.startsWith("/#")) return;
+
+    const el = document.getElementById(href.slice(2));
+    // Section is on another route: let the router handle it.
+    if (!el) return;
+
+    event.preventDefault();
+
+    const lenis = getLenis();
+    if (lenis) {
+      lenis.scrollTo(el, { offset: -80, duration: 1.1 });
+    } else {
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -63,7 +75,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => handleNavClick(link.href)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`px-3 py-2 text-[0.9rem] tracking-[0.15em] uppercase transition-colors ${
                     isActive
                       ? "text-[#FF6500]"
@@ -104,7 +116,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => handleNavClick(link.href)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`block px-3 py-3 text-[0.95rem] tracking-[0.15em] uppercase border-l-2 transition-colors ${
                     isActive
                       ? "border-[#FF6500] text-[#FF6500] bg-[#FF6500]/5"

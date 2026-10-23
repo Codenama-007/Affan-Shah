@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import ProjectGrid from "@/components/Projects/ProjectGrid";
 import Footer from "@/components/Footer";
 import CRTOverlay from "@/components/Effects/CRTOverlay";
+import { projects } from "@/data/projects";
 
 import type { Metadata } from "next";
 
@@ -32,7 +33,7 @@ export default function ProjectsPage() {
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-[0.8rem] tracking-[0.15em] text-[#EAEAEA] uppercase">
-                  TOTAL PROGRAMS: 08
+                  TOTAL PROGRAMS: {String(projects.length).padStart(2, "0")}
                 </span>
                 <span className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A24]" />

@@ -46,7 +46,7 @@ export default function Footer() {
                 GITHUB
               </a>
               <a
-                href="https://www.linkedin.com/in/affanjavedshah?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                href="https://www.linkedin.com/in/affanjavedshah"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-[0.8rem] tracking-[0.1em] text-[#777777] hover:text-[#FF6500] transition-colors uppercase"
