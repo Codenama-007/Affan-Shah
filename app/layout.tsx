@@ -56,6 +56,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: "1QY909zXbWm-Y7tFOQaPMs4vTCBaZyUrsN4C8t3s9HU",
+  },
 };
 
 import SmoothScroll from "@/components/SmoothScroll";
