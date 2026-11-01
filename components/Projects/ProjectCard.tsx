@@ -16,9 +16,9 @@ export default function ProjectCard({ project }: { project: Project }) {
         </span>
         <span
           className={`text-[0.75rem] tracking-[0.15em] uppercase px-2 py-0.5 border ${
-            project.status === "ACTIVE"
+            project.status === "LIVE"
               ? "border-[#FF8A24] text-[#FF8A24]"
-              : project.status === "BUILDING"
+              : project.status === "IN_PROGRESS"
               ? "border-[#FF6500] text-[#FF6500]"
               : "border-[#454545] text-[#777777]"
           }`}

@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import ProjectGrid from "@/components/Projects/ProjectGrid";
 import Footer from "@/components/Footer";
 import CRTOverlay from "@/components/Effects/CRTOverlay";
-import { projects } from "@/data/projects";
+import {projects}  from "@/data/projects";
 
 import type { Metadata } from "next";
 

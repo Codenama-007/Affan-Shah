@@ -1,18 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { projects } from "@/data/projects";
+import  {projects}  from "@/data/projects";
+import type { ProjectCategory } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
 
 // Derived from the data so a new category can never silently drop out of the
 // filter (the old hardcoded list did not match "Agentic AI").
-const categories = [
+const categories: ("ALL" | ProjectCategory)[] = [
   "ALL",
   ...Array.from(new Set(projects.flatMap((p) => p.categories))),
 ];
 
 export default function ProjectGrid() {
-  const [active, setActive] = useState("ALL");
+  const [active, setActive] = useState<"ALL" | ProjectCategory>("ALL");
 
   const filtered =
     active === "ALL"

@@ -1,9 +1,25 @@
-// first-nextjs-website-six.vercel.app
-// https://markdown-blog-website-ten.vercel.app/
-// https://sport-sync-frontend-ecru.vercel.app/
-// mojito-ashen-iota.vercel.app
-// clothes-swapping-platform.vercel.app
-const projects = [
+export type ProjectStatus = "LIVE" | "IN_PROGRESS";
+
+export type ProjectCategory =
+  | "AI / ML"
+  | "Agentic AI"
+  | "Web3"
+  | "RAG"
+  | "Web Development";
+
+export interface Project {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+  categories: ProjectCategory[];
+  technologies: string[];
+  status: ProjectStatus;
+  demoUrl: string;
+  sourceUrl: string;
+}
+
+export const projects: Project[] = [
   {
     id: "trip-pilot-ai",
     number: "001",
