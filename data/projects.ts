@@ -1,109 +1,205 @@
-export type Project = {
-  id: string;
-  number: string;
-  title: string;
-  description: string;
-  categories: string[];
-  technologies: string[];
-  status: "ACTIVE" | "BUILDING" | "ARCHIVED";
-  demoUrl?: string;
-  sourceUrl?: string;
-};
-
-export const projects: Project[] = [
-{
+// first-nextjs-website-six.vercel.app
+// https://markdown-blog-website-ten.vercel.app/
+// https://sport-sync-frontend-ecru.vercel.app/
+// mojito-ashen-iota.vercel.app
+// clothes-swapping-platform.vercel.app
+const projects = [
+  {
     id: "trip-pilot-ai",
     number: "001",
     title: "TRIP PILOT AI",
     description:
-      "AI-powered travel planning agent built with LangGraph. Generates personalized travel itineraries using LLMs, conversational memory, and web search.",
-    categories: ["AI / ML", "Agentic AI", "Web3"],
-    technologies: [
-      "Python",
-      "LangGraph",
-      "LangChain",
-      "Ollama",
-      "Tavily API"
-    ],
-    status: "ACTIVE",
+      "An AI-powered travel planning agent built with LangGraph, combining conversational interaction, tool-based research, and stateful workflow orchestration.",
+    categories: ["AI / ML", "Agentic AI"],
+    technologies: ["Python", "LangGraph", "LangChain", "Ollama", "Tavily"],
+    status: "IN_PROGRESS",
     demoUrl: "https://client-server-bay.vercel.app",
     sourceUrl: "https://github.com/Codenama-007/TripPilotAI",
   },
   {
-    id: "ai-coding-assistant",
+    id: "rag-based-pdf-chatbot",
     number: "002",
-    title: "AI CODING ASSISTANT",
+    title: "RAG PDF CHATBOT",
     description:
-      "An AI-powered coding assistant that helps developers write, review, and debug code using LLM and RAG pipelines.",
-    categories: ["AI / ML", "RAG"],
-    technologies: ["Python", "RAG", "MongoDB", "LangChain"],
-    status: "ACTIVE",
-    demoUrl: "#",
-    sourceUrl: "#",
+      "An AI-powered document assistant that processes PDFs, retrieves relevant information using embeddings and vector search, and generates context-aware answers.",
+    categories: ["AI / ML", "RAG", "Web Development"],
+    technologies: [
+      "React",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "PyMuPDF4LLM",
+      "Embeddings",
+      "Vector Search",
+      "JWT",
+      "Ollama",
+      "Groq",
+    ],
+    status: "IN_PROGRESS",
+    demoUrl: "https://rag-based-pdf-chatbot.netlify.app",
+    sourceUrl: "https://github.com/Codenama-007/rag-based-pdf-chatbot",
   },
   {
-    id: "connexus",
+    id: "app-saturation-radar",
     number: "003",
-    title: "CONNEXUS",
+    title: "APP SATURATION RADAR",
     description:
-      "Real-time communication platform with instant messaging, file sharing, and collaborative workspace features.",
-    categories: ["Web Development"],
-    technologies: ["Flask", "Socket.IO", "React", "PostgreSQL"],
-    status: "ACTIVE",
-    demoUrl: "#",
-    sourceUrl: "#",
+      "An AI-assisted market research tool designed to analyze product ideas, evaluate competitive saturation, and identify potential market opportunities.",
+    categories: ["AI / ML", "Agentic AI", "Web Development"],
+    technologies: [
+      "Python",
+      "LangGraph",
+      "Ollama",
+      "FastAPI",
+      "Next.js",
+      "TypeScript",
+    ],
+    status: "IN_PROGRESS",
+    demoUrl: "",
+    sourceUrl: "https://github.com/Codenama-007/App-Saturation-Radar",
   },
   {
-    id: "ml-classifier",
+    id: "knowledge-hub",
     number: "004",
-    title: "ML CLASSIFIER",
+    title: "KNOWLEDGE HUB",
     description:
-      "Machine learning classification pipeline for multi-class text classification with deployment-ready inference API.",
-    categories: ["AI / ML"],
-    technologies: ["Python", "TensorFlow", "Scikit-learn", "FastAPI"],
-    status: "ACTIVE",
-    sourceUrl: "#",
+      "An AI-powered knowledge application combining conversational assistance with GitHub repository analysis, structured data extraction, embeddings, and similarity-based retrieval.",
+    categories: ["AI / ML", "Agentic AI", "RAG", "Web Development"],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "LangGraph",
+      "Ollama",
+      "Embeddings",
+      "Scikit-learn",
+    ],
+    status: "IN_PROGRESS",
+    demoUrl: "",
+    sourceUrl: "https://github.com/Codenama-007/knowledge-hub",
   },
   {
-    id: "rag-chatbot",
+    id: "mojito",
     number: "005",
-    title: "RAG CHATBOT",
+    title: "MOJITO",
     description:
-      "Conversational AI chatbot with retrieval-augmented generation, context-aware responses, and conversation memory.",
-    categories: ["AI / ML", "RAG"],
-    technologies: ["Python", "LangChain", "OpenAI", "ChromaDB"],
-    status: "BUILDING",
+      "An immersive, scroll-driven 3D cocktail website featuring interactive flavors, realistic drink rendering, and cinematic animations.",
+    categories: ["Web Development"],
+    technologies: [
+      "React",
+      "Vite",
+      "Three.js",
+      "React Three Fiber",
+      "GSAP",
+      "Zustand",
+      "JavaScript",
+      "CSS",
+    ],
+    status: "LIVE",
+    demoUrl: "https://mojito-ashen-iota.vercel.app",
+    sourceUrl: "https://github.com/Codenama-007/mojito",
   },
   {
-    id: "portfolio-terminal",
+    id: "gaming-cafe-template",
     number: "006",
-    title: "PORTFOLIO TERMINAL",
+    title: "GAMING CAFE",
     description:
-      "This very website — a TVA-inspired retro-futuristic developer terminal built with Next.js and Tailwind CSS.",
+      "A modern gaming café website featuring gaming services, pricing plans, food and drinks menus, events, and a visual gallery.",
     categories: ["Web Development"],
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    status: "ACTIVE",
-    sourceUrl: "#",
+    status: "IN_PROGRESS",
+    demoUrl: "",
+    sourceUrl: "https://github.com/Codenama-007/gaming-cafe-template",
   },
   {
-    id: "agent-orchestrator",
+    id: "first-nextjs-website",
     number: "007",
-    title: "AGENT ORCHESTRATOR",
+    title: "FIRST NEXT.JS WEBSITE",
     description:
-      "Multi-agent AI system using LangGraph for orchestrating complex workflows with tool-calling and state management.",
-    categories: ["AI / ML", "Agentic AI"],
-    technologies: ["Python", "LangGraph", "LangChain", "FastAPI"],
-    status: "BUILDING",
+      "A responsive web interface built with Next.js and Tailwind CSS, exploring component-based layouts and modern frontend development.",
+    categories: ["Web Development"],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    status: "LIVE",
+    demoUrl: "https://first-nextjs-website-six.vercel.app",
+    sourceUrl: "https://github.com/Codenama-007/first-nextjs-website",
   },
   {
-    id: "doc-parser",
+    id: "markdown-blog-website",
     number: "008",
-    title: "DOC PARSER",
+    title: "MARKDOWN BLOG",
     description:
-      "Intelligent document parser that extracts, structures, and summarizes content from PDFs, images, and scanned documents.",
-    categories: ["AI / ML", "RAG"],
-    technologies: ["Python", "FastAPI", "OCR", "LLM"],
-    status: "ACTIVE",
-    sourceUrl: "#",
+      "A Markdown-powered blog website featuring structured article rendering, formatted content, syntax highlighting, and a modern reading experience.",
+    categories: ["Web Development"],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Markdown",
+      "Gray Matter",
+      "Remark",
+      "Rehype",
+      "Highlight.js",
+    ],
+    status: "LIVE",
+    demoUrl: "https://markdown-blog-website-ten.vercel.app/",
+    sourceUrl: "https://github.com/Codenama-007/markdown-blog-website",
+  },
+  {
+    id: "sport-sync",
+    number: "009",
+    title: "SPORTSYNC",
+    description:
+      "A sports-focused web interface featuring a landing page, navigation, and feature sections built with a modern React-based frontend stack.",
+    categories: ["Web Development"],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "React Hook Form",
+      "Zod",
+    ],
+    status: "LIVE",
+    demoUrl: "https://sport-sync-frontend-ecru.vercel.app/",
+    sourceUrl: "https://github.com/Codenama-007/sport-sync-frontend",
+  },
+  {
+    id: "ecommerce-customer-behavior-analytics",
+    number: "010",
+    title: "ECOMMERCE CUSTOMER ANALYTICS",
+    description:
+      "A customer analytics project focused on understanding purchasing patterns, customer segmentation, and customer value using RFM analysis.",
+    categories: ["AI / ML"],
+    technologies: ["Python", "Pandas", "Data Analysis", "RFM Analysis"],
+    status: "IN_PROGRESS",
+    demoUrl: "",
+    sourceUrl:
+      "https://github.com/Codenama-007/ecommerce-customer-behavior-analytics",
+  },
+  {
+    id: "paypal-ai-hackathon",
+    number: "011",
+    title: "BUYPILOT",
+    description:
+      "An AI-assisted shopping experience designed to help users explore products and make purchasing decisions through a guided workflow.",
+    categories: ["AI / ML", "Agentic AI", "Web Development"],
+    technologies: ["AI Agents", "Python", "Web Development", "PayPal Sandbox"],
+    status: "IN_PROGRESS",
+    demoUrl: "",
+    sourceUrl: "https://github.com/Codenama-007/paypalai-hackathon",
+  },
+  {
+    id: "clothes-swapping-platform",
+    number: "012",
+    title: "CLOTHES SWAPPING PLATFORM",
+    description:
+      "A web platform designed to encourage sustainable fashion by enabling users to exchange pre-loved clothing and extend the life of garments.",
+    categories: ["Web Development"],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    status: "LIVE",
+    demoUrl: "https://clothes-swapping-platform.vercel.app/",
+    sourceUrl: "https://github.com/Codenama-007/clothes-swapping-platform",
   },
 ];
