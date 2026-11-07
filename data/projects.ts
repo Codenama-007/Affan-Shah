@@ -23,6 +23,25 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+  id: "app-saturation-radar",
+  number: "003",
+  title: "APP SATURATION RADAR",
+  description:
+    "An AI-powered market research platform that evaluates product ideas, analyzes competitive saturation, identifies market gaps, and suggests potential differentiators.",
+  categories: ["AI / ML", "Agentic AI", "Web Development"],
+  technologies: [
+    "Python",
+    "LangGraph",
+    "Ollama",
+    "FastAPI",
+    "Next.js",
+    "TypeScript",
+  ],
+  status: "IN_PROGRESS",
+  demoUrl: "https://app-saturation-radar.vercel.app/",
+  sourceUrl: "https://github.com/Codenama-007/App-Saturation-Radar",
+},
+  {
     id: "trip-pilot-ai",
     number: "001",
     title: "TRIP PILOT AI",

@@ -21,13 +21,13 @@ export default function ProjectRow({ project }: { project: Project }) {
       id={project.id}
       className="scroll-mt-20 border-t border-rule first:border-t-0"
     >
-      <div className="grid gap-4 py-6 lg:grid-cols-[3.5rem_minmax(0,1fr)_10rem] lg:gap-8 lg:py-7">
+      <div className="grid gap-4 py-6 lg:grid-cols-[5rem_minmax(0,1fr)_10rem] lg:gap-8 lg:py-7">
         <div className="flex items-center gap-3 lg:flex-col lg:items-start lg:gap-2">
           <span className="font-mono text-[0.64rem] tracking-[0.12em] text-dim tabular-nums">
             {project.number}
           </span>
           <span
-            className={`flex items-center gap-1.5 font-mono text-[0.56rem] uppercase tracking-[0.12em] ${
+            className={`flex items-center gap-1.5 whitespace-nowrap font-mono text-[0.56rem] uppercase tracking-[0.12em] ${
               live ? "text-success" : "text-amber"
             }`}
           >

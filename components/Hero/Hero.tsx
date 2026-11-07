@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, Download } from "lucide-react";
+import { site } from "@/data/site";
 import PersonnelCard from "./PersonnelCard";
 
 export default function Hero() {
@@ -25,7 +26,7 @@ export default function Hero() {
                 View the work
                 <ArrowUpRight size={14} aria-hidden="true" />
               </Link>
-              <a href="/cv/cv.pdf" download className="btn-ghost">
+              <a href={site.cvPath} download className="btn-ghost">
                 Download CV
                 <Download size={14} aria-hidden="true" />
               </a>

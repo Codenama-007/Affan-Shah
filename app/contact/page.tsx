@@ -85,7 +85,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <dl>
+            <div>
               {directLinks.map((link) => {
                 const Icon = link.icon;
                 return (
@@ -104,12 +104,12 @@ export default function ContactPage() {
                           className="shrink-0 text-amber"
                         />
                         <span className="min-w-0">
-                          <dt className="font-mono text-[0.58rem] uppercase tracking-[0.14em] text-dim">
+                          <span className="block font-mono text-[0.58rem] uppercase tracking-[0.14em] text-dim">
                             {link.label}
-                          </dt>
-                          <dd className="mt-0.5 truncate text-[0.88rem] text-foreground transition-colors group-hover:text-amber">
+                          </span>
+                          <span className="mt-0.5 block truncate text-[0.88rem] text-foreground transition-colors group-hover:text-amber">
                             {link.value}
-                          </dd>
+                          </span>
                         </span>
                       </span>
                       <ArrowUpRight
@@ -121,7 +121,7 @@ export default function ContactPage() {
                   </div>
                 );
               })}
-            </dl>
+            </div>
 
             <a href={site.cvPath} download className="btn-ghost mt-6 w-full">
               <Download size={13} aria-hidden="true" />
