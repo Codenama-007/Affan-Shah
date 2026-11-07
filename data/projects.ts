@@ -17,6 +17,8 @@ export interface Project {
   status: ProjectStatus;
   demoUrl: string;
   sourceUrl: string;
+  /** Shown on the home page; the rest live in the full archive. */
+  featured?: boolean;
 }
 
 export const projects: Project[] = [
@@ -31,6 +33,7 @@ export const projects: Project[] = [
     status: "IN_PROGRESS",
     demoUrl: "https://client-server-bay.vercel.app",
     sourceUrl: "https://github.com/Codenama-007/TripPilotAI",
+    featured: true,
   },
   {
     id: "rag-based-pdf-chatbot",
@@ -54,6 +57,7 @@ export const projects: Project[] = [
     status: "IN_PROGRESS",
     demoUrl: "https://rag-based-pdf-chatbot.netlify.app",
     sourceUrl: "https://github.com/Codenama-007/rag-based-pdf-chatbot",
+    featured: true,
   },
   {
     id: "app-saturation-radar",
@@ -115,6 +119,7 @@ export const projects: Project[] = [
     status: "LIVE",
     demoUrl: "https://mojito-ashen-iota.vercel.app",
     sourceUrl: "https://github.com/Codenama-007/mojito",
+    featured: true,
   },
   {
     id: "gaming-cafe-template",

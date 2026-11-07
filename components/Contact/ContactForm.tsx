@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, FormEvent, ChangeEvent } from "react";
+import { useState, type FormEvent, type ChangeEvent } from "react";
 import { Send, CheckCircle, AlertTriangle } from "lucide-react";
+import { site } from "@/data/site";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -33,65 +34,62 @@ export default function ContactForm() {
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        throw new Error(data.error || "Transmission failed.");
+        throw new Error(data.error || "The message could not be sent.");
       }
 
       setStatus("success");
       setForm(emptyForm);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Transmission failed.");
+      setError(
+        err instanceof Error ? err.message : "The message could not be sent."
+      );
       setStatus("error");
     }
   };
 
   if (status === "success") {
     return (
-      <div className="terminal-panel text-center py-12" role="status" aria-live="polite">
-        <CheckCircle className="mx-auto mb-4 text-[#FF8A24]" size={32} />
-        <div className="text-[0.9rem] tracking-[0.2em] text-[#FF8A24] uppercase mb-2">
-          MESSAGE TRANSMITTED
-        </div>
-        <div className="text-[0.85rem] tracking-[0.15em] text-[#777777] mb-6">
-          YOUR COMMUNICATION HAS BEEN RECEIVED.
-        </div>
+      <div className="border border-line p-8" role="status" aria-live="polite">
+        <CheckCircle className="mb-4 text-amber" size={28} aria-hidden="true" />
+        <h2 className="section-title">Message sent.</h2>
+        <p className="mt-3 max-w-[44ch] text-[0.95rem] leading-relaxed text-muted">
+          Thanks for reaching out. I read everything and usually reply within a
+          couple of days.
+        </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="terminal-btn"
+          className="btn-ghost mt-6"
         >
-          [ SEND ANOTHER ]
+          Send another message
         </button>
       </div>
     );
   }
 
   return (
-    <div className="terminal-panel">
-      <div className="section-heading">COMMUNICATION CHANNEL</div>
-      <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-        {/* Honeypot: hidden from humans and assistive tech */}
-        <div
-          aria-hidden="true"
-          className="absolute left-[-9999px] h-px w-px overflow-hidden"
-        >
-          <label htmlFor="company">Company</label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            tabIndex={-1}
-            autoComplete="off"
-            value={form.company}
-            onChange={update("company")}
-          />
-        </div>
+    <form onSubmit={handleSubmit} className="space-y-5">
+      {/* Honeypot: hidden from humans and assistive tech. */}
+      <div
+        aria-hidden="true"
+        className="absolute left-[-9999px] h-px w-px overflow-hidden"
+      >
+        <label htmlFor="company">Company</label>
+        <input
+          id="company"
+          name="company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={form.company}
+          onChange={update("company")}
+        />
+      </div>
 
+      <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label
-            htmlFor="name"
-            className="block text-[0.8rem] tracking-[0.2em] text-[#777777] uppercase mb-1"
-          >
-            NAME
+          <label htmlFor="name" className="field-label">
+            Name
           </label>
           <input
             id="name"
@@ -103,16 +101,13 @@ export default function ContactForm() {
             maxLength={100}
             autoComplete="name"
             className="terminal-input"
-            placeholder="Enter your name"
+            placeholder="Your name"
           />
         </div>
 
         <div>
-          <label
-            htmlFor="email"
-            className="block text-[0.8rem] tracking-[0.2em] text-[#777777] uppercase mb-1"
-          >
-            EMAIL
+          <label htmlFor="email" className="field-label">
+            Email
           </label>
           <input
             id="email"
@@ -125,50 +120,69 @@ export default function ContactForm() {
             autoComplete="email"
             inputMode="email"
             className="terminal-input"
-            placeholder="Enter your email"
+            placeholder="you@example.com"
           />
         </div>
+      </div>
 
-        <div>
-          <label
-            htmlFor="message"
-            className="block text-[0.8rem] tracking-[0.2em] text-[#777777] uppercase mb-1"
-          >
-            MESSAGE
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            value={form.message}
-            onChange={update("message")}
-            required
-            maxLength={5000}
-            rows={5}
-            className="terminal-input resize-none"
-            placeholder="Enter your message"
-          />
-        </div>
+      <div>
+        <label htmlFor="message" className="field-label">
+          Message
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          value={form.message}
+          onChange={update("message")}
+          required
+          maxLength={5000}
+          rows={7}
+          className="terminal-input resize-y"
+          placeholder="What are you building?"
+        />
+      </div>
 
-        <div aria-live="polite">
-          {status === "error" && (
-            <div className="flex items-start gap-2 border border-[#FF6500]/40 bg-[#FF6500]/5 px-3 py-2 mb-4">
-              <AlertTriangle size={12} className="mt-0.5 shrink-0 text-[#FF6500]" />
-              <span className="text-[0.8rem] tracking-[0.1em] text-[#FF6500] uppercase">
-                {error}
-              </span>
-            </div>
-          )}
-        </div>
+      <div aria-live="polite">
+        {status === "error" && (
+          <div className="flex items-start gap-2 border border-amber/40 bg-amber/5 px-3 py-2.5">
+            <AlertTriangle
+              size={13}
+              className="mt-0.5 shrink-0 text-amber"
+              aria-hidden="true"
+            />
+            <span className="text-[0.85rem] leading-relaxed text-amber">
+              {error} You can also email{" "}
+              <a
+                href={`mailto:${site.email}`}
+                className="underline underline-offset-2"
+              >
+                {site.email}
+              </a>
+              .
+            </span>
+          </div>
+        )}
+      </div>
 
+      <div className="flex flex-col gap-4 border-t border-rule pt-5 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
           disabled={status === "sending"}
-          className="terminal-btn flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+          className="btn disabled:cursor-not-allowed disabled:opacity-60"
         >
-          <Send size={12} />
-          {status === "sending" ? "TRANSMITTING…" : "TRANSMIT MESSAGE"}
+          <Send size={13} aria-hidden="true" />
+          {status === "sending" ? "Sending…" : "Send message"}
         </button>
-      </form>
-    </div>
+        <p className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-muted">
+          Or email{" "}
+          <a
+            href={`mailto:${site.email}`}
+            className="text-foreground underline decoration-line underline-offset-4 transition-colors hover:text-amber hover:decoration-amber"
+          >
+            {site.email}
+          </a>
+        </p>
+      </div>
+    </form>
   );
 }

@@ -29,8 +29,8 @@ export default function OpengraphImage() {
               background: "#FF6500",
             }}
           />
-          <div style={{ fontSize: 24, color: "#777777", letterSpacing: 8 }}>
-            AFFAN SHAH // DEVELOPER TERMINAL
+          <div style={{ fontSize: 24, color: "#A0A0A0", letterSpacing: 8 }}>
+            AFFAN SHAH // DEVELOPER RECORD
           </div>
         </div>
 
@@ -68,7 +68,7 @@ export default function OpengraphImage() {
           <div
             style={{
               fontSize: 24,
-              color: "#777777",
+              color: "#A0A0A0",
               letterSpacing: 6,
               marginTop: 28,
             }}
@@ -77,7 +77,7 @@ export default function OpengraphImage() {
           </div>
         </div>
 
-        <div style={{ fontSize: 20, color: "#454545", letterSpacing: 4 }}>
+        <div style={{ fontSize: 20, color: "#8A8A8A", letterSpacing: 4 }}>
           AFFANSHAHAI.VERCEL.APP
         </div>
       </div>

@@ -1,30 +1,23 @@
 export type Education = {
   id: string;
-  number: string;
-  title: string;
   institution: string;
   program: string;
   status: string;
-  year: string;
+  period: string;
+  location: string;
 };
 
+/**
+ * Only verified records belong here. The previous placeholder entries
+ * (`[Your College Name]`) were shipping to production, so they are gone.
+ */
 export const education: Education[] = [
   {
-    id: "higher-secondary",
-    number: "01",
-    title: "HIGHER SECONDARY",
-    institution: "[Your College Name]",
-    program: "12th Standard",
-    status: "COMPLETED",
-    year: "2022",
-  },
-  {
     id: "engineering",
-    number: "02",
-    title: "ENGINEERING",
-    institution: "[Your Engineering College]",
-    program: "Bachelor of Engineering",
-    status: "FINAL YEAR",
-    year: "2026",
+    institution: "St. Francis Institute of Technology",
+    program: "B.E. Computer Engineering",
+    status: "In progress · Final year",
+    period: "2023 — 2027",
+    location: "Borivali, Mumbai",
   },
 ];

@@ -1,10 +1,6 @@
-import Navbar from "@/components/Navbar";
-import ProjectGrid from "@/components/Projects/ProjectGrid";
-import Footer from "@/components/Footer";
-import CRTOverlay from "@/components/Effects/CRTOverlay";
-import {projects}  from "@/data/projects";
-
 import type { Metadata } from "next";
+import ProjectGrid from "@/components/Projects/ProjectGrid";
+import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -16,39 +12,52 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
-  return (
-    <>
-      <CRTOverlay />
-      <Navbar />
-      <main className="pt-16">
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header */}
-            <div className="mb-10">
-              <div className="text-[0.8rem] tracking-[0.3em] text-[#777777] uppercase mb-2">
-                PROJECT DATABASE
-              </div>
-              <div className="text-[0.8rem] tracking-[0.2em] text-[#777777] uppercase mb-4">
-                ACCESSING DEVELOPER PROJECT ARCHIVE
-              </div>
-              <div className="flex items-center gap-4">
-                <span className="text-[0.8rem] tracking-[0.15em] text-[#EAEAEA] uppercase">
-                  TOTAL PROGRAMS: {String(projects.length).padStart(2, "0")}
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A24]" />
-                  <span className="text-[0.7rem] tracking-[0.15em] text-[#FF8A24] uppercase">
-                    ONLINE
-                  </span>
-                </span>
-              </div>
-            </div>
+  const liveCount = projects.filter(
+    (project) => project.status === "LIVE"
+  ).length;
+  const categoryCount = new Set(
+    projects.flatMap((project) => project.categories)
+  ).size;
 
-            <ProjectGrid />
+  return (
+    <section className="pb-20 pt-10 lg:pb-28 lg:pt-14">
+      <div className="shell-container">
+        <header className="section-head">
+          <p className="section-label">Archive</p>
+          <div>
+            <h1 className="page-title">Projects.</h1>
+            <p className="section-lede mt-4">
+              The full record: twelve builds across retrieval, agents, and the
+              web. Live demos and source are listed where they exist.
+            </p>
+
+            <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-3 border-y border-rule py-3 font-mono text-[0.62rem] uppercase tracking-[0.14em]">
+              <div className="flex items-baseline gap-2">
+                <dt className="text-muted">Records</dt>
+                <dd className="text-foreground tabular-nums">
+                  {String(projects.length).padStart(2, "0")}
+                </dd>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <dt className="text-muted">Live</dt>
+                <dd className="text-foreground tabular-nums">
+                  {String(liveCount).padStart(2, "0")}
+                </dd>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <dt className="text-muted">Categories</dt>
+                <dd className="text-foreground tabular-nums">
+                  {String(categoryCount).padStart(2, "0")}
+                </dd>
+              </div>
+            </dl>
           </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+        </header>
+
+        <div className="mt-10">
+          <ProjectGrid />
+        </div>
+      </div>
+    </section>
   );
 }

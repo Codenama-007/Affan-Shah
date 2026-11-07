@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero/Hero";
+import FeaturedProjects from "@/components/Projects/FeaturedProjects";
 import About from "@/components/About/About";
 import Education from "@/components/Education/Education";
-import ContactForm from "@/components/Contact/ContactForm";
-import Footer from "@/components/Footer";
-import CRTOverlay from "@/components/Effects/CRTOverlay";
 
 export const metadata: Metadata = {
   title: "AI Engineer & Full-Stack Developer",
@@ -55,22 +52,10 @@ export default function Home() {
           __html: JSON.stringify(personStructuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <CRTOverlay />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Education />
-        <section id="contact" className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="section-heading">OPEN COMMUNICATION CHANNEL</div>
-            <div className="max-w-2xl" data-reveal>
-              <ContactForm />
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
+      <Hero />
+      <FeaturedProjects />
+      <About />
+      <Education />
     </>
   );
 }

@@ -1,81 +1,47 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import CRTOverlay from "@/components/Effects/CRTOverlay";
-import { blogs } from "@/data/blogs";
-import { Calendar } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Notes",
   description:
-    "Technical articles, notes, and build logs by Affan Shah on RAG systems, AI agents, LangGraph, Next.js, and full-stack development.",
-  alternates: {
-    canonical: "https://affanshahai.vercel.app/blogs",
-  },
+    "Working notes from Affan Shah on retrieval systems, AI agents, and full-stack development.",
 };
 
-export default function BlogsPage() {
+export default function NotesPage() {
   return (
-    <>
-      <CRTOverlay />
-      <Navbar />
-      <main className="pt-16">
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header */}
-            <div className="mb-10">
-              <div className="text-[0.8rem] tracking-[0.3em] text-[#777777] uppercase mb-2">
-                BLOG DATABASE
-              </div>
-              <div className="text-[0.8rem] tracking-[0.2em] text-[#777777] uppercase">
-                ARTICLES / NOTES / BUILD LOGS
-              </div>
-            </div>
-
-            {/* Blog Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {blogs.map((blog) => (
-                <div key={blog.id} className="terminal-panel hover-glow transition-all duration-200">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[0.7rem] tracking-[0.2em] text-[#777777] uppercase">
-                      ARTICLE // {blog.number}
-                    </span>
-                    <span className="text-[0.65rem] tracking-[0.15em] text-[#454545] uppercase border border-[#454545] px-2 py-0.5">
-                      {blog.category}
-                    </span>
-                  </div>
-
-                  <div className="border-t border-[#454545] pt-3 mb-3" />
-
-                  <h3 className="text-[1rem] font-bold tracking-[0.1em] text-[#EAEAEA] uppercase mb-3">
-                    {blog.title}
-                  </h3>
-
-                  <p className="text-[0.8rem] leading-relaxed text-[#EAEAEA]/70 mb-4">
-                    {blog.excerpt}
-                  </p>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 text-[0.7rem] tracking-[0.1em] text-[#777777] uppercase">
-                      <Calendar size={10} />
-                      {blog.date}
-                    </div>
-                    {blog.url && (
-                      <a
-                        href={blog.url}
-                        className="text-[0.8rem] tracking-[0.1em] text-[#FF6500] uppercase hover:text-[#FF7A00] transition-colors"
-                      >
-                        READ ARTICLE
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+    <section className="pb-20 pt-10 lg:pb-28 lg:pt-14">
+      <div className="shell-container">
+        <header className="section-head">
+          <p className="section-label">Notes</p>
+          <div>
+            <h1 className="page-title">Notes.</h1>
+            <p className="section-lede mt-4">
+              Working notes on retrieval, agents, and the parts of building
+              software that do not fit in a project description.
+            </p>
           </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+        </header>
+
+        <div className="mt-12 border-y border-rule py-12">
+          <p className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-amber">
+            Nothing published yet
+          </p>
+          <p className="mt-4 max-w-[52ch] text-[1rem] leading-relaxed text-muted">
+            I would rather publish one honest write-up than keep a shelf of
+            empty cards. When the first note is ready, it will appear here.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/projects" className="btn">
+              See the work
+              <ArrowUpRight size={13} aria-hidden="true" />
+            </Link>
+            <Link href="/contact" className="btn-ghost">
+              Get in touch
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

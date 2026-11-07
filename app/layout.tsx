@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
+import ScrollAnimations from "@/components/Effects/ScrollAnimations";
+import PageTransitionObserver from "@/components/Transitions/PageTransitionObserver";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import CRTOverlay from "@/components/Effects/CRTOverlay";
 
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-ibm-plex-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -61,9 +73,7 @@ export const metadata: Metadata = {
   },
 };
 
-import SmoothScroll from "@/components/SmoothScroll";
-import ScrollAnimations from "@/components/Effects/ScrollAnimations";
-import PageTransitionObserver from "@/components/Transitions/PageTransitionObserver";
+const buildStamp = process.env.NEXT_PUBLIC_BUILD_STAMP ?? "dev";
 
 export default function RootLayout({
   children,
@@ -71,11 +81,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${ibmPlexMono.variable} h-full`}>
-      <body className="min-h-full flex flex-col antialiased">
+    <html
+      lang="en"
+      className={`${ibmPlexMono.variable} ${ibmPlexSans.variable} h-full`}
+    >
+      <body className="min-h-full antialiased">
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:bg-amber focus:px-4 focus:py-3 focus:font-mono focus:text-xs focus:font-semibold focus:uppercase focus:tracking-[0.12em] focus:text-background"
+        >
+          Skip to content
+        </a>
         <ScrollAnimations />
         <PageTransitionObserver />
-        <SmoothScroll>{children}</SmoothScroll>
+        <CRTOverlay />
+        <SmoothScroll>
+          <Navbar buildStamp={buildStamp} />
+          <div className="flex min-h-screen flex-col pt-12 lg:pl-[272px]">
+            <main id="content" className="flex-1">
+              {children}
+            </main>
+            <Footer buildStamp={buildStamp} />
+          </div>
+        </SmoothScroll>
       </body>
     </html>
   );

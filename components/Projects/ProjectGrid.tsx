@@ -1,59 +1,67 @@
 "use client";
 
 import { useState } from "react";
-import  {projects}  from "@/data/projects";
+import { projects } from "@/data/projects";
 import type { ProjectCategory } from "@/data/projects";
-import ProjectCard from "./ProjectCard";
+import ProjectRow from "./ProjectRow";
 
 // Derived from the data so a new category can never silently drop out of the
-// filter (the old hardcoded list did not match "Agentic AI").
-const categories: ("ALL" | ProjectCategory)[] = [
-  "ALL",
-  ...Array.from(new Set(projects.flatMap((p) => p.categories))),
+// filter. The old hardcoded list did not match the actual project data.
+const categories: ("All" | ProjectCategory)[] = [
+  "All",
+  ...Array.from(new Set(projects.flatMap((project) => project.categories))),
 ];
 
 export default function ProjectGrid() {
-  const [active, setActive] = useState<"ALL" | ProjectCategory>("ALL");
+  const [active, setActive] = useState<"All" | ProjectCategory>("All");
 
   const filtered =
-    active === "ALL"
+    active === "All"
       ? projects
-      : projects.filter((p) => p.categories.includes(active));
+      : projects.filter((project) => project.categories.includes(active));
 
   return (
     <div>
-      {/* Category Filter */}
-      <div className="mb-8">
-        <div className="text-[0.8rem] tracking-[0.2em] text-[#777777] uppercase mb-3">
-          SELECT CATEGORY
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {categories.map((cat) => (
+      <div className="flex flex-col gap-3 border-b border-rule pb-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted">
+          Filter by category
+        </p>
+        <div
+          className="flex flex-wrap gap-1.5"
+          role="group"
+          aria-label="Filter projects by category"
+        >
+          {categories.map((category) => (
             <button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className={`text-[0.8rem] tracking-[0.15em] uppercase px-3 py-1.5 border transition-all ${
-                active === cat
-                  ? "border-[#FF6500] text-[#FF6500] bg-[#FF6500]/10"
-                  : "border-[#454545] text-[#777777] hover:border-[#FF6500]/50 hover:text-[#EAEAEA]"
+              key={category}
+              type="button"
+              onClick={() => setActive(category)}
+              aria-pressed={active === category}
+              className={`min-h-11 border px-3 font-mono text-[0.62rem] uppercase tracking-[0.12em] transition-colors ${
+                active === category
+                  ? "border-amber bg-amber/10 text-amber"
+                  : "border-line text-muted hover:border-amber hover:text-foreground"
               }`}
             >
-              {cat}
+              {category}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6" data-grid>
+      <p className="mt-4 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-dim">
+        {filtered.length} of {projects.length} records shown
+      </p>
+
+      <div className="mt-2 border-b border-rule">
         {filtered.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectRow key={project.id} project={project} />
         ))}
       </div>
 
       {filtered.length === 0 && (
-        <div className="text-center py-12 text-[0.8rem] tracking-[0.15em] text-[#777777] uppercase">
-          NO PROGRAMS FOUND IN THIS CATEGORY
+        <div className="border-b border-rule py-10 text-[0.88rem] text-muted">
+          No projects in this category yet.
         </div>
       )}
     </div>

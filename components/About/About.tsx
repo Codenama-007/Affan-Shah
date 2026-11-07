@@ -1,59 +1,98 @@
-import ToolkitCard from "./ToolkitCard";
+import { skillGroups } from "@/data/skills";
 
-const toolkitCategories = [
-  "Frontend",
-  "Backend & Database",
-  "Data Science & ML",
-  "AI Systems",
+const focus = [
+  "Retrieval pipelines and evaluation for document-heavy products.",
+  "Agentic workflows with LangGraph, tool use, and state.",
+  "Full-stack product work in Next.js and FastAPI.",
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-20 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="section-heading">ABOUT THE DEVELOPER</div>
-
-        <div className="flex flex-col gap-8 lg:gap-12">
-          {/* About Text */}
-          <div className="terminal-panel" data-reveal>
-            <div className="text-[0.85rem] tracking-[0.2em] text-[#FF6500] uppercase mb-4 font-semibold">
-              ABOUT ME
-            </div>
-            <div className="space-y-4 text-[1rem] leading-relaxed text-[#EAEAEA]/80">
-              <p>
-                I am a developer focused on building full-stack applications
-                and AI systems. My work spans from crafting responsive web
-                interfaces to engineering RAG pipelines and LLM-powered tools.
-              </p>
-              <p>
-                I enjoy working with modern web technologies, backend systems,
-                and the rapidly evolving field of artificial intelligence. Every
-                project I build is designed to solve a real problem with
-                practical engineering.
-              </p>
-              <p>
-                Currently focused on full-stack development with React and
-                Next.js, while deepening my expertise in AI systems including
-                RAG, LangGraph, and agentic architectures.
-              </p>
-            </div>
-            <div className="mt-6 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF8A24]" />
-              <span className="text-[0.7rem] tracking-[0.15em] text-[#FF8A24] uppercase">
-                AVAILABLE FOR WORK
-              </span>
-            </div>
-          </div>
-
-          {/* System Toolkit */}
+    <section id="profile" className="shell-section scroll-mt-16">
+      <div className="shell-container">
+        <header className="section-head">
+          <p className="section-label">Profile</p>
           <div>
-            <div className="section-heading mb-4">SYSTEM TOOLKIT</div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-grid>
-              {toolkitCategories.map((cat) => (
-                <ToolkitCard key={cat} category={cat} />
-              ))}
-            </div>
+            <h2 className="section-title max-w-[22ch]">
+              I build the retrieval layer, then the product around it.
+            </h2>
+            <p className="section-lede mt-4">
+              Full-stack engineering with an applied AI focus. The interface is
+              part of the system, not a wrapper added at the end.
+            </p>
           </div>
+        </header>
+
+        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+          <div className="body-copy">
+            <p>
+              I build full-stack products and the AI systems inside them. Most
+              of my work sits in retrieval and agents: document pipelines,
+              vector search, and LangGraph workflows that turn a model into
+              something a user can actually operate.
+            </p>
+            <p>
+              On the product side I work in <strong>React, Next.js,
+              TypeScript</strong>, and <strong>Python / FastAPI</strong>. I care
+              about the unglamorous parts — state, errors, latency, and
+              interfaces that stay legible when the model is wrong.
+            </p>
+            <p>
+              I am finishing a B.E. in Computer Engineering at St. Francis
+              Institute of Technology in Mumbai, and going deeper into agentic
+              architectures, retrieval quality, and production LLM tooling.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-mono text-[0.78rem] font-semibold uppercase tracking-[0.14em]">
+              Current focus
+            </h3>
+            <ul className="mt-4 border-t border-rule">
+              {focus.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-3 border-b border-rule py-3.5 text-[0.88rem] leading-relaxed text-foreground/80"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="mt-[0.55rem] h-1 w-1 shrink-0 bg-amber"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-5 flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-success">
+              <span className="status-dot" aria-hidden="true" />
+              Available for work
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-14">
+          <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-rule pb-3">
+            <h3 className="font-mono text-[0.78rem] font-semibold uppercase tracking-[0.14em]">
+              Capabilities
+            </h3>
+            <p className="meta">Grouped by layer</p>
+          </div>
+
+          <dl>
+            {skillGroups.map((group) => (
+              <div
+                key={group.category}
+                className="grid gap-2 border-b border-rule py-4 sm:grid-cols-[10rem_1fr] sm:gap-8"
+              >
+                <dt className="font-mono text-[0.64rem] uppercase tracking-[0.14em] text-muted">
+                  {group.category}
+                </dt>
+                <dd className="text-[0.86rem] leading-relaxed text-foreground/80">
+                  {group.items.join(" / ")}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

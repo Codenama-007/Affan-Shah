@@ -52,7 +52,7 @@ export async function POST(request: Request) {
 
   if (isRateLimited(ip)) {
     return NextResponse.json(
-      { error: "Too many transmissions. Try again in a few minutes." },
+      { error: "Too many messages. Try again in a few minutes." },
       { status: 429 }
     );
   }
@@ -109,8 +109,8 @@ export async function POST(request: Request) {
       {
         error:
           process.env.NODE_ENV === "development"
-            ? `Channel offline: missing ${missing.join(", ")} in .env.local`
-            : "Communication channel is offline. Please email me directly.",
+            ? `Contact form is not configured: missing ${missing.join(", ")} in .env.local`
+            : "The contact form is offline. Please email me directly.",
       },
       { status: 503 }
     );
@@ -130,18 +130,18 @@ export async function POST(request: Request) {
 
   try {
     await transporter.sendMail({
-      from: `"Portfolio Terminal" <${SMTP_USER}>`,
+      from: `"Affan Shah Portfolio" <${SMTP_USER}>`,
       to: MAIL_TO,
       // Replies go straight back to the visitor; the envelope sender stays
       // authenticated so SPF/DKIM keep passing.
       replyTo: email,
-      subject: `[PORTFOLIO] New transmission from ${safeName}`,
+      subject: `[Portfolio] New message from ${safeName}`,
       text: `NAME: ${name}\nEMAIL: ${email}\n\nMESSAGE:\n${message}`,
       html: `
         <div style="background:#050505;color:#EAEAEA;padding:24px;font-family:ui-monospace,monospace">
-          <p style="color:#FF6500;letter-spacing:2px;margin:0 0 16px">NEW TRANSMISSION // PORTFOLIO</p>
-          <p style="margin:4px 0"><span style="color:#777777">NAME:</span> ${escapeHtml(name)}</p>
-          <p style="margin:4px 0"><span style="color:#777777">EMAIL:</span> ${escapeHtml(email)}</p>
+          <p style="color:#FF6500;letter-spacing:2px;margin:0 0 16px">NEW MESSAGE / PORTFOLIO</p>
+          <p style="margin:4px 0"><span style="color:#A0A0A0">NAME:</span> ${escapeHtml(name)}</p>
+          <p style="margin:4px 0"><span style="color:#A0A0A0">EMAIL:</span> ${escapeHtml(email)}</p>
           <hr style="border:0;border-top:1px solid #454545;margin:16px 0" />
           <p style="white-space:pre-wrap;margin:0">${escapeHtml(message)}</p>
         </div>`,
@@ -149,7 +149,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("[contact] sendMail failed:", error);
     return NextResponse.json(
-      { error: "Transmission failed. Please email me directly." },
+      { error: "The message could not be sent. Please email me directly." },
       { status: 500 }
     );
   }
